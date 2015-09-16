@@ -1,0 +1,3 @@
+[submodule "layers/pl-c++"]
+	path = layers/pl-c++
+	url = https://github.com/holguinj/spacemacs-pl-cpp
