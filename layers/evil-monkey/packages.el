@@ -15,13 +15,11 @@
 
 
 (defvar evil-monkey-packages
-  '(
-    evil
-    )
+  '( )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
 
-(defun evil-monkey/init-evil ()
+(defun evil-monkey--init-evil () ;; hack to be able to call this function directly for initialization purposes
   (load "~/.spacemacs.d/layers/evil-monkey/cofi-util")
   (require 'cofi-util)
   (evil-define-operator evil-delete (beg end type register yank-handler)
@@ -115,7 +113,7 @@ which require an initialization must be listed explicitly in the list.")
   (setq evil-insert-state-cursor '("gray" bar))
   (setq evil-motion-state-cursor '("gray" box)))
 
-
+(evil-monkey--init-evil)
 
 (defvar evil-monkey-excluded-packages '()
   "List of packages to exclude.")

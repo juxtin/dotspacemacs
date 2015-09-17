@@ -100,12 +100,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
+   dotspacemacs-themes '(monokai
+                         spacemacs-dark
                          solarized-dark
                          leuven
-                         monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -151,7 +149,7 @@ values."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state 't
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -216,9 +214,32 @@ user code."
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
- This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-)
+  This function is called at the very end of Spacemacs initialization after
+  layers configuration. You are free to put any user code."
+  ;; remap mac modifier keys
+  (setq mac-option-key-is-meta nil
+        mac-command-key-ismeta t
+        mac-command-modifier 'meta
+        mac-option-modifier 'super)
+
+  ;; RMS is wrong about sentences
+  (setq sentence-end-double-space nil)
+
+  ;; command-` should cycle frames as per the rest of OS X
+  (global-set-key (kbd "M-`") 'other-frame)
+
+  ;; Command+option+n for new frame
+  (global-set-key (kbd "M-s-n") 'make-frame)
+
+  (global-set-key (kbd "M-u") 'toggle-transparency)
+
+  ;; Lazy config
+  (configure-c++)
+  (activate-linum)
+  (extend-monokai)
+  (sensible-splits)
+  (configure-clojure)
+  (refine-scrolling))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
