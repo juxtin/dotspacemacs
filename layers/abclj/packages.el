@@ -24,7 +24,7 @@ which require an initialization must be listed explicitly in the list.")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; init functions
 
-(defun abclj/init-clj-refactor ()
+(defun abclj/post-init-clj-refactor ()
   "Initialize clj-refactor"
   (require 'clj-refactor)
   (add-hook 'always-be-clojing-mode-hook
@@ -32,17 +32,16 @@ which require an initialization must be listed explicitly in the list.")
               (clj-refactor-mode 1)
               (cljr-add-keybindings-with-prefix "C-c C-r"))))
 
-(defun abclj/init-clojure-mode ()
-  nil)
-
 (defun abclj/init-slamhound ()
   nil)
 
 (defun abclj/init-expand-region ()
-  (require 'expand-region)
-  (global-set-key (kbd "C-=") 'er/expand-region))
+  (use-package expand-region
+    :config
+    (progn
+      (global-set-key (kbd "C-=") 'er/expand-region))))
 
-(defun abclj/init-paredit ()
+(defun abclj/post-init-paredit ()
   (enable-paredit-mode)
   (defun disable-paredit-backslash ()
     (local-set-key [remap paredit-backslash]

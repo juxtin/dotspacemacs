@@ -39,12 +39,13 @@ values."
      (git :variables
           git-gutter-use-fringe t)
      haskell
-     idris-lang
+     idris
      markdown
      (org :variables
           org-enable-github-support t)
      osx
      puppet
+     ruby
      semantic
      (shell :variables
             ;; fix leading 4m with `tic -o ~/.terminfo /usr/local/share/emacs/24.5/etc/e/eterm-color.ti`
@@ -237,7 +238,7 @@ user code."
   (configure-c++)
   (activate-linum)
   (extend-monokai)
-  (sensible-splits)
+  ;; (sensible-splits)
   (configure-clojure)
   (refine-scrolling))
 

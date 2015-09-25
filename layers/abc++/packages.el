@@ -22,18 +22,14 @@
 
 ;; For each package, define a function abc++/init-<package-name>
 ;;
-(defun abc++/init-cc-mode ()
+(defun abc++/post-init-cc-mode ()
   "Initialize abc++"
-  (use-package cc-mode
-    :defer t
-    :init
-    (progn
-      (load (expand-file-name "~/.emacs.d/private/abc++/config.el"))
-      (defun abc++-hook ()
-        (c-add-style "Google" google-c-style t)
-        (c-set-style "Google")
-        (c-toggle-hungry-state 1))
-      (add-hook 'c++-mode-hook 'abc++-hook))))
+  (load (expand-file-name "~/.emacs.d/private/abc++/config.el"))
+  (defun abc++-hook ()
+    (c-add-style "Google" google-c-style t)
+    (c-set-style "Google")
+    (c-toggle-hungry-state 1))
+  (add-hook 'c++-mode-hook 'abc++-hook))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
