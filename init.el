@@ -33,7 +33,11 @@ values."
             c-c++-default-mode-for-headers 'c++-mode)
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
-     clojure
+     (clojure :variables
+              cider-inject-dependencies-at-jack-in nil ;; needed for :pedantic? abort
+              nrepl-hide-special-buffers t
+              cider-eval-result-duration nil
+              clojure-enable-fancify-symbols t)
      emacs-lisp
      evil-monkey
      (git :variables

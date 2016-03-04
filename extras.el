@@ -24,9 +24,10 @@
 ;;      )))
 
 (defun configure-clojure ()
-  (setq clojure-enable-fancify-symbols t)
+  ;; (setq clojure-enable-fancify-symbols t) ;; adding this directly to layer instantiation
   ;; (put 'prop/for-all 'clojure-backtracking-indent '(4 (2)))
-  (add-hook 'cider-repl-mode-hook #'paredit-mode))
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'cider-connected-hook #'cider-refresh))
 
 ;; M-u to toggle transparency
 (defun toggle-transparency ()
@@ -38,8 +39,6 @@
     (set-frame-parameter nil 'alpha '(90 85))))
 
 (defun activate-linum ()
-  (require 'linum-relative)
-  ;; (setq linum-relative-current-symbol "->")
   (setq linum-relative-current-symbol "") ;; just show the current (absolute) line number
   (linum-relative-toggle)
   (global-linum-mode))
