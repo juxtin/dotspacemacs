@@ -26,7 +26,10 @@ values."
      ;; ----------------------------------------------------------------
      pl-c++
      abclj
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-snippets-in-popup t)
      better-defaults
      (c-c++ :variables
             c-c++-enable-clang-support t
@@ -42,25 +45,38 @@ values."
      evil-monkey
      (git :variables
           git-gutter-use-fringe t)
-     haskell
+     github
+     (haskell :variables
+              haskell-enable-ghci-ng-support t)
      idris
+     (elm :variables
+          elm-reactor-port "4714"
+          elm-reactor-address "127.0.0.1")
+     erc
      markdown
      (org :variables
           org-enable-github-support t)
      osx
      puppet
      ruby
+     (rust :variables
+           racer-cmd "/Users/justin/.cargo/bin/racer"
+           racer-rust-src-path "/Users/justin/src/rust/src"
+           rust-enable-racer t)
      semantic
      (shell :variables
-            ;; fix leading 4m with `tic -o ~/.terminfo /usr/local/share/emacs/24.5/etc/e/eterm-color.ti`
-            ;; might need to change version number
-            shell-default-shell 'multi-term
+            shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/zsh"
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
-     syntax-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-tooltips nil)
      themes-megapack
+     windows-scripts
+     version-control
+     vinegar
+     yaml
      ycmd
      )
    ;; List of additional packages that will be installed without being
@@ -97,7 +113,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -241,10 +257,45 @@ user code."
   ;; Lazy config
   (configure-c++)
   (activate-linum)
-  (extend-monokai)
+  ;; (extend-monokai)
   ;; (sensible-splits)
   (configure-clojure)
-  (refine-scrolling))
+  ;; (refine-scrolling)
+  (configure-elm)
+
+  (global-evil-search-highlight-persist 0))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(puppet-lint-command
+   "puppet-lint --with-context --no-80chars-check --log-format \"%{path}:%{linenumber}: %{kind}: %{message} (%{check})\"")
+ '(safe-local-variable-values
+   (quote
+    ((idris-load-packages "contrib" "effects" "lightyear")
+     (idris-load-packages "effects")
+     (eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face)))))
+     (idris-load-packages "contrib" "effects")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(font-lock-doc-face ((t (:foreground "light goldenrod" :slant italic)))))

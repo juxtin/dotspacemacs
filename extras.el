@@ -67,3 +67,7 @@
   (defadvice split-window (after move-point-to-new-window activate)
     "Moves the point to the newly created window after splitting."
     (other-window 1)))
+
+(defun configure-elm ()
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-elm)))
