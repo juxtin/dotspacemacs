@@ -1,6 +1,6 @@
 ;;; packages.el --- abclj (always be clojing) Layer packages File for Spacemacs
 ;;
-;; Copyright (c) 2012-2014 Justin Holguin
+;; Copyright (c) 2015-2016 Justin Holguin
 ;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
 ;;
 ;; Author: Justin Holguin <justin.h.holguin@gmail.com>
@@ -101,6 +101,19 @@ which require an initialization must be listed explicitly in the list.")
   (fset 'align-let
         [?v ?i ?\[ ?\M-x ?a ?l ?i ?g ?n ?- ?r ?e ?g ?e ?x ?p return ?\( return ?= ?a ?p]))
 
+(defun abclj--other-ns (ns)
+  "If `ns' ends in `-test', strip that off. Otherwise, add `-test'."
+  (if (string-match-p "-test$" ns)
+      (string-remove-suffix "-test" ns)
+    (concat ns "-test")))
+
+(defun abclj-jump-to-test-ns-or-back (&optional arg)
+  "If the point is in `project.namespace', jump to `project.namespace-test'. If
+the point is in `project.namespace-test', jump to `project.namespace'."
+  (interactive "P")
+  (let ((target-ns (abclj--other-ns (cider-current-ns))))
+    (cider-find-ns arg target-ns)))
+
 (defvar abclj-excluded-packages '()
   "List of packages to exclude.")
 
@@ -148,6 +161,8 @@ which require an initialization must be listed explicitly in the list.")
     (tc/quick-check 1))
 
   (put-clojure-indent 'prop/for-all 1)
+  (put-clojure-indent 'm/match 1)
+  (put-clojure-indent 'match 1)
   (put-clojure-indent 'tc/quick-check 1)
 
   ;; Use the :repl profile. If you want to add/remove Leiningen

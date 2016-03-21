@@ -39,7 +39,7 @@ values."
      (clojure :variables
               cider-inject-dependencies-at-jack-in nil ;; needed for :pedantic? abort
               nrepl-hide-special-buffers t
-              cider-eval-result-duration nil
+              ;; cider-eval-result-duration nil
               clojure-enable-fancify-symbols t)
      emacs-lisp
      evil-monkey
@@ -272,6 +272,7 @@ user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(paradox-github-token t)
  '(puppet-lint-command
    "puppet-lint --with-context --no-80chars-check --log-format \"%{path}:%{linenumber}: %{kind}: %{message} (%{check})\"")
  '(safe-local-variable-values
