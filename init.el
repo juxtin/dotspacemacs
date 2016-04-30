@@ -265,6 +265,7 @@ user code."
 
   (spacemacs/toggle-evil-cleverparens-on)
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
 
   (global-evil-search-highlight-persist 0))
 
