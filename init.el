@@ -60,8 +60,8 @@ values."
      puppet
      ruby
      (rust :variables
-           racer-cmd "/Users/justin/.cargo/bin/racer"
-           racer-rust-src-path "/Users/justin/src/rust/src"
+           racer-cmd (expand-file-name "~/.cargo/bin/racer")
+           racer-rust-src-path (expand-file-name "~/src/.rust/src")
            rust-enable-racer t)
      semantic
      (shell :variables
