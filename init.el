@@ -267,7 +267,7 @@ user code."
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
   (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
 
-  (global-evil-search-highlight-persist 0))
+  (global-evil-search-highlight-persist -1))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
