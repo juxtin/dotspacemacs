@@ -4,6 +4,10 @@
   (setq racket-racket-program "/Applications/Racket v6.2.1/bin/racket")
   (setq racket-raco-program "/Applications/Racket v6.2.1/bin/raco"))
 
+(defun use-ido ()
+  (spacemacs/set-leader-keys "ff" 'ido-find-file)
+  (global-set-key (kbd "C-x C-f") 'ido-find-file))
+
 (defun configure-c++ ()
   (set-variable 'ycmd-server-command '("python2.7" "/Users/justin/src/ycmd/ycmd"))
   (set-variable 'ycmd-extra-conf-whitelist '("~/src/*")))
