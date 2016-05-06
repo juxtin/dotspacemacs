@@ -89,6 +89,7 @@ values."
                       syntax-checking-enable-tooltips nil)
      themes-megapack
      windows-scripts
+     vagrant
      version-control
      vinegar
      yaml
