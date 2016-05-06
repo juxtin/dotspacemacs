@@ -54,6 +54,7 @@ values."
               nrepl-hide-special-buffers t
               ;; cider-eval-result-duration nil
               clojure-enable-fancify-symbols t)
+     cryptol
      emacs-lisp
      (git :variables
           git-gutter-use-fringe t)

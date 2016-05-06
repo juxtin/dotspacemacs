@@ -1,3 +1,6 @@
 [submodule "layers/pl-c++"]
 	path = layers/pl-c++
 	url = https://github.com/holguinj/spacemacs-pl-cpp
+[submodule "layers/cryptol"]
+	path = layers/cryptol
+	url = git://github.com/holguinj/cryptol-layer.git
