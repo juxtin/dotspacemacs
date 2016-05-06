@@ -147,12 +147,12 @@ the point is in `project.namespace-test', jump to `project.namespace'."
 
   ;; other customizations
   ;;
-  ;; break -> and ->> so Dan will be happy
   (define-clojure-indent
     (try 1)
     (try+ 1)
-    (->  1)
-    (->> 1)
+    ;; break -> and ->> so Dan will be happy
+    ;; (->  1)
+    ;; (->> 1)
     (GET 1)
     (PUT 1)
     (POST 1)
