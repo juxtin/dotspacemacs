@@ -50,7 +50,7 @@ values."
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
      (clojure :variables
-              cider-inject-dependencies-at-jack-in nil ;; needed for :pedantic? abort
+              ;; cider-inject-dependencies-at-jack-in nil ;; needed for :pedantic? abort
               nrepl-hide-special-buffers t
               ;; cider-eval-result-duration nil
               clojure-enable-fancify-symbols t)
