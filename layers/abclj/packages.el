@@ -24,22 +24,20 @@ which require an initialization must be listed explicitly in the list.")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; init functions
 
-(defun abclj/post-init-clj-refactor ()
-  "Initialize clj-refactor"
-  (require 'clj-refactor)
-  (add-hook 'always-be-clojing-mode-hook
-            (lambda ()
-              (clj-refactor-mode 1)
-              (cljr-add-keybindings-with-prefix "C-c C-r"))))
+;; (defun abclj/post-init-clj-refactor ()
+;;   "Initialize clj-refactor"
+;;   (require 'clj-refactor)
+;;   (add-hook 'always-be-clojing-mode-hook
+;;             (lambda ()
+;;               (clj-refactor-mode 1)
+;;               (cljr-add-keybindings-with-prefix "C-c C-r"))))
 
 (defun abclj/init-slamhound ()
   nil)
 
-(defun abclj/init-expand-region ()
-  (use-package expand-region
-    :config
-    (progn
-      (global-set-key (kbd "C-=") 'er/expand-region))))
+(with-eval-after-load 'expand-region
+  (progn
+    (global-set-key (kbd "C-=") 'er/expand-region)))
 
 (defun abclj/post-init-paredit ()
   (enable-paredit-mode)
