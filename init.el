@@ -60,7 +60,8 @@ values."
           git-gutter-use-fringe t)
      github
      (haskell :variables
-              haskell-enable-ghci-ng-support t)
+              haskell-enable-ghci-ng-support t
+              haskell-process-type 'stack-ghci)
      idris
      (elm :variables
           elm-reactor-port "4714"
