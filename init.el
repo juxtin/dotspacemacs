@@ -33,6 +33,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     html
+     sql
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -55,6 +57,7 @@ values."
               ;; cider-eval-result-duration nil
               clojure-enable-fancify-symbols t)
      cryptol
+     dockerfile
      emacs-lisp
      (git :variables
           git-gutter-use-fringe t)
@@ -74,6 +77,7 @@ values."
      osx
      ;; pl-c++
      puppet
+     purescript
      ruby
      (rust :variables
            racer-cmd (expand-file-name "~/.cargo/bin/racer")
@@ -85,7 +89,7 @@ values."
             shell-default-term-shell "/bin/zsh"
             shell-default-height 30
             shell-default-position 'bottom)
-     spacemacs-helm
+     helm
      spell-checking
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
