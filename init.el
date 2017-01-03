@@ -63,7 +63,9 @@ values."
           git-gutter-use-fringe t)
      github
      (haskell :variables
+              haskell-completion-backend 'ghc-mod
               haskell-enable-ghci-ng-support t
+              haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans") ;; workaround for bad issue
               haskell-process-type 'stack-ghci)
      idris
      (elm :variables
