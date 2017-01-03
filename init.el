@@ -80,11 +80,13 @@ values."
      ;; pl-c++
      puppet
      purescript
-     ruby
+     (ruby :variables
+           ruby-version-manager 'rvm)
      (rust :variables
            racer-cmd (expand-file-name "~/.cargo/bin/racer")
            racer-rust-src-path (expand-file-name "~/src/.rust/src")
-           rust-enable-racer t)
+           rust-enable-racer t
+           rust-format-on-save t)
      semantic
      (shell :variables
             shell-default-shell 'ansi-term
@@ -346,7 +348,8 @@ user code."
   (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
   (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
 
-  (global-evil-search-highlight-persist -1))
+  (global-evil-search-highlight-persist -1)
+  (rvm-use-default))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
