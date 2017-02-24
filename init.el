@@ -28,7 +28,7 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
+   ;; dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/") ;; FUCK
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -57,14 +57,13 @@ values."
               ;; cider-eval-result-duration nil
               clojure-enable-fancify-symbols t)
      cryptol
-     dockerfile
      emacs-lisp
      (git :variables
           git-gutter-use-fringe t)
      github
      (haskell :variables
-              haskell-completion-backend 'ghc-mod
-              haskell-enable-ghci-ng-support t
+              haskell-completion-backend 'intero
+              ;; haskell-enable-ghci-ng-support t
               haskell-process-args-stack-ghci '("--ghci-options=-ferror-spans") ;; workaround for bad issue
               haskell-process-type 'stack-ghci)
      idris
@@ -73,6 +72,9 @@ values."
           elm-reactor-address "127.0.0.1")
      erc
      evil-cleverparens
+     (latex :variables
+            latex-enable-auto-fill t
+            latex-enable-folding t)
      markdown
      (org :variables
           org-enable-github-support t)
@@ -349,7 +351,10 @@ user code."
   (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
 
   (global-evil-search-highlight-persist -1)
-  (rvm-use-default))
+  (rvm-use-default)
+
+  ;; latex preview help
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

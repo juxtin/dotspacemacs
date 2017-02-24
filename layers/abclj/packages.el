@@ -12,10 +12,7 @@
 (defvar abclj-packages
   '(
     ;; package abcljs go here
-    clj-refactor
-    clojure-mode
     slamhound
-    expand-region
     paredit
     )
   "List of all packages to install and/or initialize. Built-in packages
