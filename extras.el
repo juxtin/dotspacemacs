@@ -2,9 +2,8 @@
 
 (defun nice-cider-repl ()
   (interactive)
-  (split-window-below-and-focus)
-  (window-resize (get-buffer-window) -15 nil)
-  (windmove-up)
+  (split-window-below)
+  (window-resize (get-buffer-window) 18 nil)
   (cider-switch-to-repl-buffer 't)
   (cider-switch-to-last-clojure-buffer))
 
