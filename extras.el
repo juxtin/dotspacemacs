@@ -1,5 +1,13 @@
 (eval-when-compile (require 'cl))
 
+(defun nice-cider-repl ()
+  (interactive)
+  (split-window-below-and-focus)
+  (window-resize (get-buffer-window) -15 nil)
+  (windmove-up)
+  (cider-switch-to-repl-buffer 't)
+  (cider-switch-to-last-clojure-buffer))
+
 (defun configure-racket ()
   (setq racket-racket-program "/Applications/Racket v6.2.1/bin/racket")
   (setq racket-raco-program "/Applications/Racket v6.2.1/bin/raco"))
@@ -31,7 +39,8 @@
   ;; (setq clojure-enable-fancify-symbols t) ;; adding this directly to layer instantiation
   ;; (put 'prop/for-all 'clojure-backtracking-indent '(4 (2)))
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-connected-hook #'cider-refresh))
+  (add-hook 'cider-connected-hook #'cider-refresh)
+  (add-hook 'cider-connected-hook #'nice-cider-repl))
 
 ;; M-u to toggle transparency
 (defun toggle-transparency ()
