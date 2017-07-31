@@ -32,7 +32,7 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '(javascript
      html
      sql
      ;; ----------------------------------------------------------------
@@ -67,6 +67,8 @@ values."
               haskell-process-type 'stack-ghci)
      idris
      (elm :variables
+          elm-format-command "elm-format"
+          elm-sort-imports-on-save t
           elm-reactor-port "4714"
           elm-reactor-address "127.0.0.1")
      erc
