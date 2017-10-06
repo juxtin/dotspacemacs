@@ -118,6 +118,16 @@ values."
    ;; the list `dotspacemacs-configuration-layers'. (default t)
    dotspacemacs-delete-orphan-packages t))
 
+(defun x-display-width-inches ()
+  (let* ((width-height
+          (cdr (assoc 'mm-size (car (x-display-monitor-attributes-list))))))
+    (* 0.039 (car width-height))))
+
+(defun is-hidpi-p ()
+  (let* ((x-res  (x-display-pixel-width))
+         (ppi (fround (/ x-res (x-display-width-inches)))))
+    (>= ppi 213)))
+
 (defun dotspacemacs/init ()
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
