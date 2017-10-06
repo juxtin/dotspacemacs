@@ -131,10 +131,9 @@ values."
    dotspacemacs-delete-orphan-packages t))
 
 (defun x-display-width-inches ()
-  (let* ((width-height
-          (cdr (assoc 'mm-size (car (x-display-monitor-attributes-list))))))
-    (when width-height
-      (* 0.039 (car width-height)))))
+  (when-let ((width-height
+              (cdr (assoc 'mm-size (car (x-display-monitor-attributes-list))))))
+    (* 0.039 (car width-height))))
 
 (defun is-hidpi-p ()
   (when-let ((x-res  (x-display-pixel-width)))
