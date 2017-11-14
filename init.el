@@ -84,6 +84,7 @@ values."
      puppet
      purescript
      (ruby :variables
+           ruby-enable-enh-ruby-mode t
            ruby-version-manager 'rvm)
      (rust :variables
            racer-cmd (expand-file-name "~/.cargo/bin/racer")
@@ -100,7 +101,6 @@ values."
      spell-checking
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
-     themes-megapack
      windows-scripts
      vagrant
      version-control
@@ -189,12 +189,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font (list
-                              "Source Code Pro"
-                              :size (if (is-hidpi-p) 30 13)
-                              :weight 'normal
-                              :width 'normal
-                              :powerline-scale 1.1)
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13 ;(if (is-hidpi-p) 30 13)
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.8)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -327,6 +326,8 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   )
 
+
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
   This function is called at the very end of Spacemacs initialization after
@@ -336,6 +337,9 @@ user code."
         mac-command-key-ismeta t
         mac-command-modifier 'meta
         mac-option-modifier 'super)
+
+  (setq x-meta-keysym 'super
+        x-super-keysym 'meta)
 
   (use-ido)
 
