@@ -12,7 +12,6 @@
 (defvar abclj-packages
   '(
     ;; package abcljs go here
-    slamhound
     paredit
     )
   "List of all packages to install and/or initialize. Built-in packages

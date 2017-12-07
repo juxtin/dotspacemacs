@@ -34,11 +34,19 @@
 ;;      (C . t)
 ;;      )))
 
+(defun configure-hsq-git-link ()
+  (eval-after-load 'git-link
+    '(progn
+       (add-to-list 'git-link-remote-alist
+                    '("git\\.healthsparq\\.net" git-link-bitbucket))
+       (add-to-list 'git-link-commit-remote-alist
+                    '("git\\.healthsparq\\.net" git-link-commit-bitbucket)))))
+
 (defun configure-clojure ()
   ;; (setq clojure-enable-fancify-symbols t) ;; adding this directly to layer instantiation
   ;; (put 'prop/for-all 'clojure-backtracking-indent '(4 (2)))
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-connected-hook #'cider-refresh)
+  ;(add-hook 'cider-connected-hook #'cider-refresh)
   (add-hook 'cider-connected-hook #'nice-cider-repl))
 
 ;; M-u to toggle transparency
