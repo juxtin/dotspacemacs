@@ -28,8 +28,18 @@ which require an initialization must be listed explicitly in the list.")
 ;;               (clj-refactor-mode 1)
 ;;               (cljr-add-keybindings-with-prefix "C-c C-r"))))
 
-(defun abclj/init-slamhound ()
-  nil)
+(defun insert-spy/p (&args)
+  (interactive "P")
+  (insert "#spy/p "))
+
+(defun insert-spy/d (&args)
+  (interactive "P")
+  (insert "#spy/d ^{:marker \"\"} ")
+  (backward-char 3))
+
+(defun insert-spy/t (&args)
+  (interactive "P")
+  (insert "#spy/t "))
 
 (with-eval-after-load 'expand-region
   (progn
@@ -118,17 +128,18 @@ the point is in `project.namespace-test', jump to `project.namespace'."
   "Additional customizations for Clojure by Justin Holguin."
   :lighter " ABClj"
   :keymap (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "C-c h") 'helm-clojure-headlines)
+            ;(define-key map (kbd "C-c h") 'helm-clojure-headlines)
             (define-key map (kbd "C-c C-d") 'ac-cider-popup-doc)
             (define-key map (kbd "C-x 3") (lambda (&args) (interactive "P") (split-window-horizontally) (helm-projectile)))
             (define-key map (kbd "C-x 2") (lambda (&args) (interactive "P") (split-window-vertically) (helm-projectile)))
             map)
   ;(evil-leader/set-leader "<SPC>")
 
-  (evil-leader/set-key-for-mode 'clojure-mode "h"   #'helm-clojure-headlines)
-  (evil-leader/set-key-for-mode 'clojure-mode "m s p" (lambda (&args) (interactive "P") (insert "#spy/p ")))
-  (evil-leader/set-key-for-mode 'clojure-mode "m s d" (lambda (&args) (interactive "P") (insert "#spy/d ^{:marker \"\"} ") (backward-char 3)))
-  (evil-leader/set-key-for-mode 'clojure-mode "m s t" (lambda (&args) (interactive "P") (insert "#spy/t ")))
+  (spacemacs/set-leader-keys-for-major-mode 'clojure-mode
+    "g h" #'helm-clojure-headlines
+    "i p" #'insert-spy/p
+    "i d" #'insert-spy/d
+    "i t" #'insert-spy/t)
 
   ;; (local-unset-key "M-.")
   ;; (local-unset-key "M-,")
