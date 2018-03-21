@@ -77,13 +77,15 @@ values."
           elm-reactor-port "4714"
           elm-reactor-address "127.0.0.1")
      erc
-     evil-cleverparens
      (latex :variables
             latex-enable-auto-fill t
             latex-enable-folding t)
      markdown
      (org :variables
-          org-enable-github-support t)
+          org-projectile-file "notes.org"
+          org-enable-reveal-js-support t
+          org-enable-github-support t
+          org-enable-bootstrap-support t)
      osx
      ;; pl-c++
      puppet
@@ -102,11 +104,13 @@ values."
             shell-default-term-shell "/bin/zsh"
             shell-default-height 30
             shell-default-position 'bottom)
-     helm
+     (helm :variables
+           helm-use-frame-when-more-than-two-windows nil)
      spell-checking
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
      systemd
+     typescript
      windows-scripts
      vagrant
      version-control
