@@ -84,7 +84,7 @@ values."
             latex-enable-folding t)
      markdown
      (org :variables
-          org-projectile-file "notes.org"
+          ;; org-projectile-file "notes.org"
           org-enable-reveal-js-support t
           org-enable-github-support t
           org-enable-bootstrap-support t)
