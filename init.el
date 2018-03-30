@@ -55,7 +55,9 @@ values."
               ;; cider-inject-dependencies-at-jack-in nil ;; needed for :pedantic? abort
               nrepl-hide-special-buffers t
               ;; cider-eval-result-duration nil
-              clojure-enable-fancify-symbols t)
+              clojure-enable-fancify-symbols t
+              ;; allow refactor-nrepl to eval code
+              cljr-warn-on-eval nil)
      ;; cryptol
      docker
      emacs-lisp
