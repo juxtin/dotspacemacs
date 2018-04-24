@@ -345,6 +345,11 @@ user code."
   "Configuration function for user code.
   This function is called at the very end of Spacemacs initialization after
   layers configuration. You are free to put any user code."
+  ;; workaround for pasting bug (when opening file with mouse on home screen)
+  (add-hook 'spacemacs-buffer-mode-hook
+            (lambda ()
+              (set (make-local-variable 'mouse-1-click-follows-link) nil)))
+
   ;; remap mac modifier keys
   (setq mac-option-key-is-meta nil
         mac-command-key-ismeta t
