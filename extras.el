@@ -60,7 +60,7 @@
 
 (defun activate-linum ()
   (setq linum-relative-current-symbol "") ;; just show the current (absolute) line number
-  (linum-relative-toggle)
+  ;; (linum-relative-toggle)
   (global-linum-mode))
 
 (defun extend-monokai ()
